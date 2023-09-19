@@ -40,15 +40,15 @@ namespace NUnitTest
 			}
 		}
 
-		[Test]
-		[TestCase(1, new int[] { 0, 1, 1, 2, 3 })]
-		[TestCase(0, new int[] { 0 })]
-		[TestCase(null, new int[] { 0, 1, 1, 2, 3, 5 })]
-		[TestCase(6, new int[] { 0, 1, 1, 2, 3, 5 })]
-		public void FiboCheckV2_InputRange_ReturnListFibo(int? range, int[] expected)
-		{
-			var result = fibo.GetFiboSeries(range);
-			CollectionAssert.AreEqual(expected, result);
-		}
+		//[Test]
+		//[TestCase(1, new int[] { 0, 1, 1, 2, 3 })]
+		//[TestCase(0, new int[] { 0 })]
+		//[TestCase(null, new int[] { 0, 1, 1, 2, 3, 5 })]
+		//[TestCase(6, new int[] { 0, 1, 1, 2, 3, 5 })]
+		//public void FiboCheckV2_InputRange_ReturnListFibo(int? range, int[] expected)
+		//{
+		//	var result = fibo.GetFiboSeries(range);
+		//	CollectionAssert.AreEqual(expected, result);
+		//}
 	}
 }

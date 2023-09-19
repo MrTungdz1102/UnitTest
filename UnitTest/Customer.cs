@@ -1,34 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UnitTest
+﻿namespace UnitTest
 {
-	public class Customer
+	public interface ICustomer
 	{
-		public int Discount { get; set; } = 15;
+		int Discount { get; set; }
+		int OrderTotal { get; set; }
+		string? GreetMessage { get; set; }
+		bool IsPlatinum { get; set; }
+		string GreetAndCombineName(string firstName, string lastName);
+		CustomerType GetCustomerDetail();
+	}
+	public class Customer : ICustomer
+	{
+		public int Discount { get; set; }
 		public int OrderTotal { get; set; }
-		public string GreetMessage { get; set; }
-		public string GreetAndCombineName(string firstName, string lastName) {
-			if(string.IsNullOrWhiteSpace(lastName))
+		public string? GreetMessage { get; set; }
+		public bool IsPlatinum { get; set; }
+
+		public Customer()
+		{
+			Discount = 15;
+			IsPlatinum = false;
+		}
+		public string GreetAndCombineName(string firstName, string lastName)
+		{
+			if (string.IsNullOrWhiteSpace(lastName))
 			{
 				throw new ArgumentException("Empty LastName");
 			}
-			GreetMessage =  $"Hello, {firstName} {lastName}";
+			GreetMessage = $"Hello, {firstName} {lastName}";
 			Discount = 200;
 			return GreetMessage;
 		}
-		public CustomerType GetCustomerDetail() {
-			if(OrderTotal < 100)
+		public CustomerType GetCustomerDetail()
+		{
+			if (OrderTotal < 100)
 			{
 				return new BasicType();
 			}
 			return new PlatinumType();
 		}
 	}
-	
+
 	public class CustomerType { }
 	public class BasicType : CustomerType { }
 	public class PlatinumType : CustomerType { }
