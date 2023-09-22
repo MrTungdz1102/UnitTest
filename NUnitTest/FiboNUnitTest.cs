@@ -36,6 +36,8 @@ namespace NUnitTest
 			else
 			{
 				List<int> expectedRange = new() { 0, 1, 1, 2, 3, 5 };
+				Assert.That(result, Is.Not.Empty);
+				Assert.That(result, Is.Ordered);
 				Assert.That(result, Is.EquivalentTo(expectedRange));
 			}
 		}
